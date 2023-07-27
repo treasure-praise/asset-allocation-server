@@ -8,10 +8,10 @@ const ip = require("ip");
 // ✅
 const getFundManagers = asyncHandler(async (req, res) => {
   const assetManagers = await fundManagers.find();
-  const totalCap = fundManagers.getTotalTransaction("648adce411a36c660b85cc6e");
+
   res.status(200).send({
     count: assetManagers.length,
-    totalCap: totalCap,
+    totalCap: assetManagers.totalCap,
     data: assetManagers,
   });
 });

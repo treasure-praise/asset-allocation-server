@@ -2,6 +2,7 @@ const asyncHandler = require("express-async-handler");
 const transactions = require("../models/transactionsModel");
 const fundManagers = require("../models/fundManagerModel");
 const activityLog = require("../models/activityLogModel");
+const Rollovers = require("../models/rolloverModel");
 const requestIp = require("request-ip");
 const mongoose = require("mongoose");
 const axios = require("axios");
@@ -17,12 +18,18 @@ const getTransactionsOnFundManager = asyncHandler(async (req, res) => {
   });
 });
 
+// const getRolloversOnTransactions = asyncHandler(async (req, res) => {
+//   const result = await transactions.findById(req.params.transactionId);
+//   // .populate("rolloverId");
+//   res.status(200).json({
+//     message: "success",
+//     data: result,
+//   });
+// });
+
 const createTransactionOnFundManager = asyncHandler(async (req, res) => {
   const transaction = await transactions.create({
     description: req.body.description,
-    date: req.body.date,
-    rate: req.body.rate,
-    maturityDate: req.body.maturityDate,
     fundManagers: (req.body.fundManagers = req.params.id),
     amount: req.body.amount,
   });
@@ -47,7 +54,7 @@ const createTransactionOnFundManager = asyncHandler(async (req, res) => {
       },
     },
   ]);
-  console.log(result);
+  // console.log(result);
 
   if (result.length > 0) {
     const totalRate = result[0].totalRate;

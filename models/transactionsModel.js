@@ -25,10 +25,16 @@ const transactionsSchema = mongoose.Schema(
     amount: {
       type: Number,
     },
+    // rolloverId: [
+    //   {
+    //     type: mongoose.Schema.ObjectId,
+    //     ref: "rollover",
+    //   },
+    // ],
   },
   {
-    toJSON: { virtuals: true },
-    toObject: { virtuals: true },
+    // toJSON: { virtuals: true },
+    // toObject: { virtuals: true },
   }
 );
 

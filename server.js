@@ -20,6 +20,7 @@ app.use("/fundmanager", require("./routes/fundManagersRoutes"));
 app.use("/transactions", require("./routes/transactionRoutes"));
 app.use("/total-cap", require("./routes/total-cap.routes"));
 app.use("/activityLog", require("./routes/activityLog.routes"));
+app.use("/rollover", require("./routes/rollover.routes"));
 
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
